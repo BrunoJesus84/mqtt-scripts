@@ -13,11 +13,15 @@ while(cont):
 	message = input("Enter the message to publish: ")
 	topic = input("Enter the topic to publish: ")
 	qos = int(input("Enter the QoS level: "))
-	ret= client1.publish(topic,message,qos=qos,retain=False)    #publish
+	rf = input("Retain message 1 True  0 False : ")
+	if (rf == "1") :
+		ret= client1.publish(topic,message,qos=qos,retain=True)  #publish
+	else:
+		ret= client1.publish(topic,message,qos=qos,retain=False)    #publish
 	print("...")
 	print("message <", message, "> was published on topic <", topic, ">")
 	print("...")
 	opc = input("Continue to Publishing (Y/n): ")
-	if ((opc=="n") or (opc=="N")):
+	if ((opc=="n") or (opc=="N")) :
 		cont = False
 		print("Connection finished.")
