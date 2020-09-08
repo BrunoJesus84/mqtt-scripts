@@ -13,8 +13,9 @@ while(cont):
 	message = input("Enter the message to publish: ")
 	topic = input("Enter the topic to publish: ")
 	qos = int(input("Enter the QoS level: "))
+	qtdmsg = int(input("Enter the amount of messages to publish: "))
 	rf = input("Retain message (1 True / 0 False) : ")
-	for x in range(1,22):
+	for x in range(1,qtdmsg+1):
 		if (rf == "1") :
 			ret= client1.publish(topic,message,qos=qos,retain=True)  #publish
 		else:
