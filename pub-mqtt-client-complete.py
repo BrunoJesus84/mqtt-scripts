@@ -1,6 +1,6 @@
 import paho.mqtt.client as paho #import the client1
-#broker_address="192.168.1.73" 
-broker = "broker.hivemq.com" #use external broker
+#broker="192.168.1.74" 
+broker = input("Enter the broker adress to connect: ") #use external broker
 port = 1883
 def on_publish(client,userdata,result):             #create function for callback
     print("data published \n")

@@ -1,6 +1,6 @@
 import paho.mqtt.client as paho #import the client1
-#broker_address="192.168.1.73" 
-broker = "broker.hivemq.com" #use external broker
+#broker="192.168.1.74" 
+broker = input("Enter the broker adress to connect: ") #use external broker
 port = 1883
 def on_publish(client,userdata,result):             #create function for callback
     print("data published \n")
@@ -10,7 +10,12 @@ client1.on_publish = on_publish             #assign function to callback
 client1.connect(broker,port)                #establish connection
 cont = True
 while(cont):
-	message = input("Enter the message to publish: ")
+	payload = input("Enter the payload filename: ")
+	if (payload == "1"):
+		payload = "payload_simple.txt"
+	f = open(payload, "r")
+	message = f.read()
+	f.close()
 	topic = input("Enter the topic to publish: ")
 	qos = int(input("Enter the QoS level: "))
 	qtdmsg = int(input("Enter the amount of messages to publish: "))

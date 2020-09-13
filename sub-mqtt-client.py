@@ -7,10 +7,10 @@ def on_message(client, userdata, message):
     print("message QoS =",message.qos)
     print("message retain flag =",message.retain)
 ########################################
-#broker_address="192.168.1.73" 
 cont = True
 while(cont):	
-	broker_address="broker.hivemq.com"
+	#broker_address="192.168.1.74" 
+	broker_address = input("Enter the broker adress to connect: ")
 	print("creating new instance...")
 	client = mqtt.Client("B1") #create new instance
 	client.on_message = on_message #attach function to callback
